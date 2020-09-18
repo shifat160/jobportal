@@ -38,10 +38,10 @@
                     <td>
                         Position: {{$job->position}}
                         <br>
-                        Job Nature: <i class="fas fa-clock"></i> {{$job->type}}
+                        Job Description: {{$job->description}}
                     </td>
                     <td>
-                        Address: {{$job->address}}
+                        Title: {{$job->title}}
                     </td>
                     <td>
                         {{$job->created_at->diffForHumans()}}

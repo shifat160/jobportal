@@ -151,5 +151,6 @@
                         @endif
             </div>
     </div>
+    {{-- <userprofile-component></userprofile-component> --}}
 </div>
 @endsection

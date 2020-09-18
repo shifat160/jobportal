@@ -5,6 +5,11 @@
     <div class="row">
         <div class="col-md-8">
             <div class="card">
+                @if (Session::has('message'))
+                        <div class="alert alert-success">
+                            {{Session::get('message')}}
+                        </div>
+                    @endif
                 <div class="card-header">{{$job->title }}</div>
                 <div class="card-body">
                     <p>
@@ -44,12 +49,22 @@
                 </div>
             </div>
 
-            @if (Auth::check())
-            <a href="">
-                <button class="btn btn-primary" style="width: 100%">
-                    Apply
-                </button>
-            </a>
+            @if (Auth::user()->user_type=='seeker')
+                @if(!$job->checkjobapply())
+                    <form action="{{route('jobs.apply',[$job->id])}}" method="post">
+                        @csrf
+                        <button class="btn btn-primary" style="width: 100%">
+                            Apply
+                        </button>
+                    </form>
+                @else 
+                <h4><span class="badge badge-primary">You have already applied at this position</span></h4>
+                <a href="/">
+                    <button class="btn btn-success">View more jobs</button>
+                </a>
+                    
+                    
+                @endif
             @endif 
 
         </div>
