@@ -11,9 +11,9 @@ Employer
 
 	After sign up and login employer or company can create amd update profile from the dropdown list named as Company Profile
 
-	In Company profile They can update their info and if cover photo is not uploaded there is an alert that their cover photo 	is not exist
+	In Company profile They can update their info and if cover photo is not uploaded there is an alert that their cover photo is not exist
 
-	from nav bar there is post job button from where employers will be able to post job and show all jobs they have posted so 	far, this component was build using vue.
+	from nav bar there is post job button from where employers will be able to post job and show all jobs they have posted so far, this component is build using vue.
 
 	Employer can also see who have applied so far from the dropdown
 
