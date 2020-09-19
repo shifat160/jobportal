@@ -48,25 +48,25 @@
                     <p>Deadline:{{$job->last_date }}</p>
                 </div>
             </div>
-
+          
             @if (Auth::user()->user_type=='seeker')
                 @if(!$job->checkjobapply())
-                    <form action="{{route('jobs.apply',[$job->id])}}" method="post">
-                        @csrf
-                        <button class="btn btn-primary" style="width: 100%">
-                            Apply
-                        </button>
-                    </form>
+                    @if(!empty(Auth::user()->profile->resume))
+                        <jobapply-component jobid={{$job->id}}></jobapply-component>
+                    @else
+                        <a href="{{route('profile.create')}}">
+                        <h4><span class="badge badge-danger">Please Upload Your CV to apply this position</span></h4>
+                        </a>
+                        
+                    @endif
                 @else 
-                <h4><span class="badge badge-primary">You have already applied at this position</span></h4>
-                <a href="/">
-                    <button class="btn btn-success">View more jobs</button>
-                </a>
-                    
-                    
+                    <h4><span class="badge badge-primary">You have already applied at this position</span></h4>
+                    <a href="/">
+                        <button class="btn btn-success">View more jobs</button>
+                    </a>
                 @endif
             @endif 
-
+        
         </div>
     </div>
 </div>

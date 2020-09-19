@@ -21,7 +21,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 
-Route::get('/jobs/{id}/{job}','JobController@show')->name('jobs.show');
+Route::get('/jobs/{id}/{job}','JobController@show')->name('jobs.show')->middleware('seeker');
 
 Route::post('jobs/apply/{id}','JobController@apply')->name('jobs.apply');//apply jobs
 
@@ -32,7 +32,7 @@ Route::get('jobs/applicants','JobController@applicants')->name('jobs.applicants'
 
 
 
-Route::get('user/profile','UserProfileController@index')->name('profile.create');//now
+Route::get('user/profile','UserProfileController@index')->name('profile.create');
 
 Route::post('profile/store','UserProfileController@store')->name('profile.store');
 Route::post('profile/coverletter','UserProfileController@coverletter')->name('profile.coverletter');
@@ -57,11 +57,13 @@ Route::post('comapny/store','CompanyController@store')->name('company.store');
 Route::post('company/cover','CompanyController@cover')->name('company.cover');
 
 
-//create jobs
-Route::get('/jobs','JobController@create')->name('jobs.create');
+//create jobs vue routes
+Route::get('/jobs','JobController@create')->name('jobs.create');// post a new job and view all using vue 
 Route::post('save_job','JobController@save_job');
+Route::post('edit_job/{id}','JobController@edit_job');
 
 
-
+//vue
+Route::post('/applications/{id}','JobController@apply')->name('apply');//apply
 
 //Route::prefix('data')->namespace('Data')->middleware(['web','auth'])->group(base_path('route/web/data.php'));

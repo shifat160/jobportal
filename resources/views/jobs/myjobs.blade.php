@@ -23,12 +23,11 @@
                         <tbody>
                       
                             <tr>
-                            <td>{{$job->roles}}</td>
+                               <td>{{$job->roles}}</td>
                                <td>{{$job->position}}</td>
                                <td>{{$job->description}}</td>
-                               <td>
-                               
-                               </td>
+                               <td>                               
+                              </td>
                                <td></td>
                             </tr>    
                         

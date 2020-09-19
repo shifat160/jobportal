@@ -96,16 +96,20 @@
                                     @if(Auth::user()->user_type !='seeker')
                                         <a class="dropdown-item" href="{{ route('company.create') }}"
                                         >
-                                        {{ __('Company Dashboard') }}
+                                        {{ __('Company Profile') }}
                                         </a>
                                         <a class="dropdown-item" href="{{ route('jobs.applicants') }}"
                                         >
                                         {{ __('Job Applicants') }}
                                         </a>
 
-                                        <a class="dropdown-item" href="{{ route('jobs.myjob') }}"
+                                        {{-- <a class="dropdown-item" href="{{ route('jobs.myjob') }}"
                                         >
                                         {{ __('My Jobs') }}
+                                        </a> --}}
+                                        <a class="dropdown-item" href="{{ route('jobs.create') }}"
+                                        >
+                                        {{ __('Post a new Job') }}
                                         </a>
 
                                     @else 

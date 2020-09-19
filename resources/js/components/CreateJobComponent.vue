@@ -57,7 +57,13 @@
                                     <td>{{companyjob.title}}</td>
                                     <td>{{companyjob.roles}}</td>
                                     <td>{{companyjob.description}}</td>
-                                    <td>Edit|Delete</td>                                    
+                                    <td>
+                                        <!-- Button trigger modal -->
+                                        <!-- <button type="button" @click="editJob(companyjob.id)" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                            Edit
+                                        </button> -->
+                                        
+                                    </td>                                    
                                 </tr>
                             </tbody>
                         </table>
@@ -66,6 +72,53 @@
                 </div>
             </div>
         </div>
+
+                <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form >
+                        <div class="form-group">
+                            <label>Job Title</label>
+                            <input type="text" class="form-control" v-model="edittitle"  placeholder="Enter Job title" name="title">
+                        </div>
+                        <div class="form-group">
+                            <label>Roles</label>
+                            <input type="text" class="form-control"  v-model="editroles" placeholder="" name="roles">
+                        </div>
+                        <div class="form-group">
+                            <label>Description</label>
+                            <input type="text" class="form-control" v-model="editdescription"  placeholder="" name="description">
+                        </div>
+                        <div class="form-group">
+                            <label>Position</label>
+                            <input type="text" class="form-control" v-model="editposition" placeholder="" name="position">
+                        </div>
+                        <!-- <div class="form-group">
+                            <label>Category</label>
+                            
+                            <select name="category" id="" class="form-control">
+
+                            </select>
+                        </div> -->
+                        <button type="submit" @click.prevent="saveJob" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+                </div>
+            </div>
+            </div>
+
     </div>
 </template>
 
@@ -77,7 +130,11 @@
                 title: '',
                 roles: '',
                 description:'',
-                position:''
+                position:'',
+                edittitle: '',
+                editroles: '',
+                editdescription:'',
+                editposition:''
 
             }
         },
@@ -107,7 +164,10 @@
                     console.log(response.data);
 					this.companyjob = response.data;
 				});
-		    }
+            },
+            editJob(id){
+                axios.get('edit_job'+id);
+            }
 
         }
     }

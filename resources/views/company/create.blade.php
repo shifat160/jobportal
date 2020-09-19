@@ -94,7 +94,7 @@
                                 <p>Last Name:{{Auth::user()->company->clname}} </p>
                                 <p>Email:{{Auth::user()->email}} </p>
                                 <p>Address:{{Auth::user()->company->address}}</p>
-                                <p class="text-success">Company Page: <a href="company/{{Auth::user()->company->slug}}">View</a> </p>
+                                {{-- <p class="text-success">Company Page: <a href="company/{{Auth::user()->company->slug}}">View</a> </p> --}}
                                 <p>Joined Since:{{Auth::user()->created_at->diffForHumans()}}</p>
 
 

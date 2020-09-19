@@ -28,4 +28,5 @@ class Job extends Model
         return DB::table('job_user')->where('user_id',auth()->user()->id)
         ->where('job_id',$this->id)->exists();
     }
+    
 }

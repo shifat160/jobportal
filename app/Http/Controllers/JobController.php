@@ -12,7 +12,7 @@ use Illuminate\Support\Str;
 class JobController extends Controller
 {
     public function index() {
-        $jobs = Job::all();
+        $jobs = Job::paginate(8);
         return view('welcome',compact('jobs'));
     }
     
@@ -71,4 +71,7 @@ class JobController extends Controller
         return view('jobs.applicant',compact('applicants'));
     }
 
+    public function edit_job($id){
+        
+    }
 }

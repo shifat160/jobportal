@@ -33,19 +33,27 @@
                         {{$job->created_at->diffForHumans()}}
                     </td>
                     <td>
+                @if (Auth::user())
                     <a href="{{ route('jobs.show',[$job->id,$job->slug]) }}">
                             <button class="btn btn-sm btn-success">
                                 View Job
-                            </button>
-                            
-                        </a>
+                            </button>    
+                    </a>
+                @else 
+                    <a href="{{ route('login') }}">
+                        <button class="btn btn-sm btn-success">
+                             View Job
+                        </button>    
+                    </a> 
+                @endif
                     </td>
                 </tr>    
             @endforeach
+            
                 
             </tbody>
         </table>
-        
+        {{$jobs->links()}}
     </div>
 </div>
 @endsection
